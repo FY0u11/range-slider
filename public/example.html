@@ -16,10 +16,11 @@
 <script defer src="range-slider.min.js"></script><link href="range-slider.min.css" rel="stylesheet"></head>
 <body>
 <div class="container">
-  <div class="r-slider" data-steps='[120,500,1000,5000,50000]'></div>
   <div class="r-slider"></div>
+  <div class="r-slider" data-steps='[120,500,1000,5000,50000]'></div>
   <div class="r-slider" data-steps='["a","b","c","d","e","f","g"]'></div>
   <div class="r-slider" data-steps='["First","Second","Third"]' data-start-index="1"></div>
+  <div class="r-slider" data-min="-100" data-max="0" data-step="10"></div>
 </div>
 <script>
   const s1 = document.getElementsByClassName('r-slider')[0],

@@ -28,8 +28,7 @@ Array.from(sliders).forEach((slider, i) => {
   const circleWidth = circle.getBoundingClientRect().width,
     circleBorderWidth = parseFloat(getStyle(circle, 'border-width')),
     getMovingCloudWidth = () => movingCloud.getBoundingClientRect().width,
-    defaultSteps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    steps = getSteps() ?? defaultSteps,
+    steps = getSteps(),
     getStepWidth = () => (getSliderWidth() - circleWidth) / (steps.length - 1)
 
   let isDragged = false,
@@ -45,7 +44,23 @@ Array.from(sliders).forEach((slider, i) => {
     let dataSteps = slider.dataset.steps
 
     if (!dataSteps) {
-      return null
+      let dataMin = parseInt(slider.dataset.min) || 0
+
+      let dataMax = parseInt(slider.dataset.max)
+      dataMax = isNaN(dataMax) ? 100 : dataMax
+
+      let dataStep = parseInt(slider.dataset.step) || 1
+      dataStep = dataStep < 0 ? 1 : dataStep
+
+      const steps = []
+
+      let step = dataMin
+      while (step <= dataMax) {
+        steps.push(step)
+        step += dataStep
+      }
+
+      return steps
     }
 
     try {

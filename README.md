@@ -15,7 +15,7 @@ First import css and js files:
 </body>
 ```
 
-Add slider to page
+Add slider to page (without any data attributes it will produce range slider from 0 to 100)
 ```html
 <body>
   ...
@@ -42,12 +42,39 @@ To specify start point add data-start-index attribute
 </body>
 ```
 
+To specify min range add data-min attribute
+```html
+<body>
+  ...
+  <div class="r-slider" data-min="-100"></div>
+  ...
+</body>
+```
+
+To specify max range add data-max attribute
+```html
+<body>
+  ...
+  <div class="r-slider" data-max="1000"></div>
+  ...
+</body>
+```
+
+To specify step of generated range add data-step attribute
+```html
+<body>
+  ...
+  <div class="r-slider" data-step="5"></div>
+  ...
+</body>
+```
+
 To get range slider value on its updating add event listener on slider
 ```html
 <body>
   ...
-  <div class="r-slider"></div>
-  <div class="r-slider"></div>
+  <div class="r-slider" data-steps='["a","b","c","d","e","f"]'></div>
+  <div class="r-slider" data-min="-100" data-max="200" data-step="5"></div>
   ...
   <script>
     const s1 = document.getElementsByClassName('r-slider')[0],
