@@ -1,0 +1,88 @@
+$gray: #dee4ec;
+$primary: #526a83;
+
+
+.r-slider {
+  background-color: $gray;
+  border-radius: 5px;
+  height: 5px;
+  position: relative;
+  cursor: pointer;
+  margin: 40px 0 10px;
+  width: 100%;
+  user-select: none;
+  box-shadow: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  & * {
+    user-select: none;
+    box-shadow: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &_hidden {
+    visibility: hidden;
+  }
+
+  &__cloud {
+    user-select: none;
+    position: absolute;
+    top: -40px;
+    padding: 3px 5px;
+    height: 14px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-weight: bold;
+    width: max-content;
+
+    &_moving {
+      top: -34px;
+      background-color: $primary;
+      color: white;
+      z-index: 1;
+
+      &::before {
+        position: absolute;
+        display: block;
+        content: "";
+        bottom: -6px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        margin-left: -3px;
+        overflow: hidden;
+        border: 3px solid transparent;
+        border-top-color: lighten($primary, 10%);
+      }
+    }
+
+    &_right {
+      right: 0;
+    }
+  }
+
+  &__circle {
+    position: absolute;
+    top: -12px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: white;
+    border: 6px solid $primary;
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  &__filled-line {
+    background-color: $primary;
+    border-radius: 5px;
+    height: 5px;
+    width: 0;
+  }
+}

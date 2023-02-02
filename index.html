@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Range Slider</title>
+  <style>
+      .container {
+          padding-top: 50px;
+          margin: 0 auto;
+          width: 60%;
+          display: flex;
+          gap:15px;
+          flex-direction: column;
+      }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="r-slider" data-steps='[120,500,1000,5000,50000]'></div>
+  <div class="r-slider"></div>
+  <div class="r-slider" data-steps='["a","b","c","d","e","f","g"]'></div>
+  <div class="r-slider" data-steps='["First","Second","Third"]' data-start-index="1"></div>
+</div>
+<script>
+  const s1 = document.getElementsByClassName('r-slider')[0],
+        s2 = document.getElementsByClassName('r-slider')[1],
+        s3 = document.getElementsByClassName('r-slider')[2],
+        s4 = document.getElementsByClassName('r-slider')[3]
+
+  s1.addEventListener('r-slider-updated', e => console.log('slider1', e.detail.value))
+  s2.addEventListener('r-slider-updated', e => console.log('slider2', e.detail.value))
+  s3.addEventListener('r-slider-updated', e => console.log('slider3', e.detail.value))
+  s4.addEventListener('r-slider-updated', e => console.log('slider4', e.detail.value))
+</script>
+</body>
+</html>
