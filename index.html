@@ -26,12 +26,14 @@
   const s1 = document.getElementsByClassName('r-slider')[0],
         s2 = document.getElementsByClassName('r-slider')[1],
         s3 = document.getElementsByClassName('r-slider')[2],
-        s4 = document.getElementsByClassName('r-slider')[3]
+        s4 = document.getElementsByClassName('r-slider')[3],
+        s5 = document.getElementsByClassName('r-slider')[4]
 
   s1.addEventListener('r-slider-updated', e => console.log('slider1', e.detail.value))
   s2.addEventListener('r-slider-updated', e => console.log('slider2', e.detail.value))
   s3.addEventListener('r-slider-updated', e => console.log('slider3', e.detail.value))
   s4.addEventListener('r-slider-updated', e => console.log('slider4', e.detail.value))
+  s5.addEventListener('r-slider-updated', e => console.log('slider5', e.detail.value))
 </script>
 </body>
 </html>
