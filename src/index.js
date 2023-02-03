@@ -25,11 +25,11 @@ Array.from(sliders).forEach((slider, i) => {
   movingCloud.classList.add('r-slider__cloud', 'r-slider__cloud_moving',
     'r-slider_hidden')
 
-  const circleWidth = circle.getBoundingClientRect().width,
-    circleBorderWidth = parseFloat(getStyle(circle, 'border-width')),
+  const getCircleWidth = () => circle.getBoundingClientRect().width,
+    getCircleBorderWidth = () => parseFloat(getStyle(circle, 'border-width')),
     getMovingCloudWidth = () => movingCloud.getBoundingClientRect().width,
     steps = getSteps() ?? getGeneratedSteps(),
-    getStepWidth = () => (getSliderWidth() - circleWidth) / (steps.length - 1)
+    getStepWidth = () => (getSliderWidth() - getCircleWidth()) / (steps.length - 1)
 
   let isDragged = false,
     currentStepIndex = getStartIndex(),
@@ -159,7 +159,7 @@ Array.from(sliders).forEach((slider, i) => {
 
   function updateCurrentStepIndex(clientX) {
     currentStepIndex = Math.round((clientX - getSliderLeftX()
-      - circleWidth/2) / getStepWidth())
+      - getCircleWidth()/2) / getStepWidth())
 
     currentStepIndex = currentStepIndex >= steps.length
       ? steps.length - 1
@@ -185,10 +185,10 @@ Array.from(sliders).forEach((slider, i) => {
       :  'visible'
 
     movingCloud.innerHTML = '' + steps[currentStepIndex]
-    movingCloud.style.left = -(circleBorderWidth + getMovingCloudWidth()/2
-      - circleWidth/2) + 'px'
+    movingCloud.style.left = -(getCircleBorderWidth() + getMovingCloudWidth()/2
+      - getCircleWidth()/2) + 'px'
 
-    filledLine.style.width = newLeft + circleWidth/2 + 'px'
+    filledLine.style.width = newLeft + getCircleWidth()/2 + 'px'
 
     if (previousStepIndex !== currentStepIndex) {
       sliderUpdatedEvent.detail.value = steps[currentStepIndex]
