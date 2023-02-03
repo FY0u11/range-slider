@@ -28,7 +28,7 @@ Array.from(sliders).forEach((slider, i) => {
   const circleWidth = circle.getBoundingClientRect().width,
     circleBorderWidth = parseFloat(getStyle(circle, 'border-width')),
     getMovingCloudWidth = () => movingCloud.getBoundingClientRect().width,
-    steps = getSteps(),
+    steps = getSteps() ?? getGeneratedSteps(),
     getStepWidth = () => (getSliderWidth() - circleWidth) / (steps.length - 1)
 
   let isDragged = false,
@@ -44,23 +44,7 @@ Array.from(sliders).forEach((slider, i) => {
     let dataSteps = slider.dataset.steps
 
     if (!dataSteps) {
-      let dataMin = parseInt(slider.dataset.min) || 0
-
-      let dataMax = parseInt(slider.dataset.max)
-      dataMax = isNaN(dataMax) ? 100 : dataMax
-
-      let dataStep = parseInt(slider.dataset.step) || 1
-      dataStep = dataStep < 0 ? 1 : dataStep
-
-      const steps = []
-
-      let step = dataMin
-      while (step <= dataMax) {
-        steps.push(step)
-        step += dataStep
-      }
-
-      return steps
+      return null
     }
 
     try {
@@ -81,6 +65,26 @@ Array.from(sliders).forEach((slider, i) => {
     }
 
     return dataSteps
+  }
+
+  function getGeneratedSteps() {
+    let dataMin = parseInt(slider.dataset.min) || 0
+
+    let dataMax = parseInt(slider.dataset.max)
+    dataMax = isNaN(dataMax) ? 100 : dataMax
+
+    let dataStep = parseInt(slider.dataset.step) || 1
+    dataStep = dataStep < 0 ? 1 : dataStep
+
+    const steps = []
+
+    let step = dataMin
+    while (step <= dataMax) {
+      steps.push(step)
+      step += dataStep
+    }
+
+    return steps
   }
 
   function getStartIndex() {
