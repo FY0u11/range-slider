@@ -173,8 +173,6 @@ Array.from(sliders).forEach((slider, i) => {
       return
     }
 
-    previousStepIndex = currentStepIndex
-
     const newLeft = getStepWidth() * currentStepIndex
     circle.style.left = newLeft + 'px'
 
@@ -192,7 +190,11 @@ Array.from(sliders).forEach((slider, i) => {
 
     filledLine.style.width = newLeft + circleWidth/2 + 'px'
 
-    sliderUpdatedEvent.detail.value = steps[currentStepIndex]
-    slider.dispatchEvent(sliderUpdatedEvent)
+    if (previousStepIndex !== currentStepIndex) {
+      sliderUpdatedEvent.detail.value = steps[currentStepIndex]
+      slider.dispatchEvent(sliderUpdatedEvent)
+    }
+
+    previousStepIndex = currentStepIndex
   }
 })
