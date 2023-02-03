@@ -86,4 +86,4 @@ To get range slider value on its updating add event listener on slider
 </body>
 ```
 
-To see more check public/example.html file or https://jsfiddle.net/fy0u11/oxtj6szn/11/
+To see more check public/example.html file or https://jsfiddle.net/fy0u11/oxtj6szn/13/
