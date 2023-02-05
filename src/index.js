@@ -108,8 +108,8 @@ Array.from(sliders).forEach((slider, i) => {
 
   movingCloud.style.visibility = 'visible'
 
-  leftCloud.innerHTML = '' + steps[0]
-  rightCloud.innerHTML = '' + steps[steps.length - 1]
+  leftCloud.innerHTML = '' + formatNumber(steps[0])
+  rightCloud.innerHTML = '' + formatNumber(steps[steps.length - 1])
 
 
   circle.addEventListener('mousedown', () => {
@@ -184,7 +184,7 @@ Array.from(sliders).forEach((slider, i) => {
       ? 'hidden'
       :  'visible'
 
-    movingCloud.innerHTML = '' + steps[currentStepIndex]
+    movingCloud.innerHTML = '' + formatNumber(steps[currentStepIndex])
     movingCloud.style.left = -(getCircleBorderWidth() + getMovingCloudWidth()/2
       - getCircleWidth()/2) + 'px'
 
@@ -196,5 +196,14 @@ Array.from(sliders).forEach((slider, i) => {
     }
 
     previousStepIndex = currentStepIndex
+  }
+
+  function formatNumber(number) {
+    const fNumber = +number
+    if (Number.isNaN(fNumber)) {
+      return number
+    }
+
+    return number.toLocaleString('en-US')
   }
 })
