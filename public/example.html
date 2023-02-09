@@ -23,8 +23,9 @@
   <div class="r-slider" data-min="-100" data-max="0" data-step="10"></div>
 </div>
 <script>
-  for (const i of documents.getElementsByClassName('r-slider'))
-    i.addEventListener('r-slider-updated', e => console.log(`slider${i}`, e.detail.value))
+  for (let i = 0; i < 5; i++) {
+      document.getElementsByClassName('r-slider')[i].addEventListener('r-slider-updated', e => console.log(`slider${i+1}`, e.detail.value))
+    }
 </script>
 </body>
 </html>
